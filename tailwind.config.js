@@ -45,7 +45,10 @@ colors: {
         slideIn: {
           '0%': { transform: 'translateY(-10px)', opacity: '0' },
           '100%': { transform: 'translateY(0)', opacity: '1' },
-        },
+},
+      },
+      scale: {
+        '102': '1.02',
       },
       boxShadow: {
         'soft': '0 2px 4px rgba(0, 0, 0, 0.05)',
