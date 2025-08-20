@@ -1,0 +1,112 @@
+[
+  {
+    "Id": 1,
+    "firstName": "Emma",
+    "lastName": "Johnson",
+    "email": "emma.johnson@school.edu",
+    "id": "STU001",
+    "gradeLevel": 11,
+    "classIds": ["class1", "class2", "class3"],
+    "currentGrade": 92,
+    "attendanceRate": 96
+  },
+  {
+    "Id": 2,
+    "firstName": "Liam",
+    "lastName": "Williams",
+    "email": "liam.williams@school.edu",
+    "id": "STU002",
+    "gradeLevel": 10,
+    "classIds": ["class1", "class2"],
+    "currentGrade": 87,
+    "attendanceRate": 94
+  },
+  {
+    "Id": 3,
+    "firstName": "Sophia",
+    "lastName": "Brown",
+    "email": "sophia.brown@school.edu",
+    "id": "STU003",
+    "gradeLevel": 12,
+    "classIds": ["class2", "class3"],
+    "currentGrade": 95,
+    "attendanceRate": 98
+  },
+  {
+    "Id": 4,
+    "firstName": "Noah",
+    "lastName": "Davis",
+    "email": "noah.davis@school.edu",
+    "id": "STU004",
+    "gradeLevel": 9,
+    "classIds": ["class1", "class3"],
+    "currentGrade": 78,
+    "attendanceRate": 89
+  },
+  {
+    "Id": 5,
+    "firstName": "Olivia",
+    "lastName": "Miller",
+    "email": "olivia.miller@school.edu",
+    "id": "STU005",
+    "gradeLevel": 11,
+    "classIds": ["class1", "class2", "class3"],
+    "currentGrade": 90,
+    "attendanceRate": 97
+  },
+  {
+    "Id": 6,
+    "firstName": "William",
+    "lastName": "Wilson",
+    "email": "william.wilson@school.edu",
+    "id": "STU006",
+    "gradeLevel": 10,
+    "classIds": ["class2"],
+    "currentGrade": 84,
+    "attendanceRate": 92
+  },
+  {
+    "Id": 7,
+    "firstName": "Ava",
+    "lastName": "Moore",
+    "email": "ava.moore@school.edu",
+    "id": "STU007",
+    "gradeLevel": 12,
+    "classIds": ["class1", "class3"],
+    "currentGrade": 93,
+    "attendanceRate": 95
+  },
+  {
+    "Id": 8,
+    "firstName": "James",
+    "lastName": "Taylor",
+    "email": "james.taylor@school.edu",
+    "id": "STU008",
+    "gradeLevel": 9,
+    "classIds": ["class1", "class2"],
+    "currentGrade": 76,
+    "attendanceRate": 88
+  },
+  {
+    "Id": 9,
+    "firstName": "Isabella",
+    "lastName": "Anderson",
+    "email": "isabella.anderson@school.edu",
+    "id": "STU009",
+    "gradeLevel": 11,
+    "classIds": ["class2", "class3"],
+    "currentGrade": 89,
+    "attendanceRate": 94
+  },
+  {
+    "Id": 10,
+    "firstName": "Benjamin",
+    "lastName": "Thomas",
+    "email": "benjamin.thomas@school.edu",
+    "id": "STU010",
+    "gradeLevel": 10,
+    "classIds": ["class1", "class2", "class3"],
+    "currentGrade": 86,
+    "attendanceRate": 91
+  }
+]

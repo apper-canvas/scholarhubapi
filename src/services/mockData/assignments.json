@@ -1,0 +1,65 @@
+[
+  {
+    "Id": 1,
+    "classId": "class1",
+    "name": "Algebra Quiz 1",
+    "category": "Quiz",
+    "points": 100,
+    "dueDate": "2024-01-15",
+    "weight": 0.2
+  },
+  {
+    "Id": 2,
+    "classId": "class1",
+    "name": "Calculus Test",
+    "category": "Test",
+    "points": 150,
+    "dueDate": "2024-01-22",
+    "weight": 0.4
+  },
+  {
+    "Id": 3,
+    "classId": "class1",
+    "name": "Homework Set 1",
+    "category": "Homework",
+    "points": 50,
+    "dueDate": "2024-01-10",
+    "weight": 0.1
+  },
+  {
+    "Id": 4,
+    "classId": "class2",
+    "name": "Essay: Romeo & Juliet",
+    "category": "Essay",
+    "points": 100,
+    "dueDate": "2024-01-20",
+    "weight": 0.3
+  },
+  {
+    "Id": 5,
+    "classId": "class2",
+    "name": "Poetry Analysis",
+    "category": "Assignment",
+    "points": 75,
+    "dueDate": "2024-01-18",
+    "weight": 0.2
+  },
+  {
+    "Id": 6,
+    "classId": "class3",
+    "name": "Cell Biology Lab",
+    "category": "Lab",
+    "points": 120,
+    "dueDate": "2024-01-25",
+    "weight": 0.3
+  },
+  {
+    "Id": 7,
+    "classId": "class3",
+    "name": "Genetics Quiz",
+    "category": "Quiz",
+    "points": 80,
+    "dueDate": "2024-01-17",
+    "weight": 0.2
+  }
+]

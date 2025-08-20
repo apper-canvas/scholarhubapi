@@ -1,0 +1,107 @@
+[
+  {
+    "Id": 1,
+    "studentId": "1",
+    "classId": "class1",
+    "date": "2024-01-08",
+    "status": "present"
+  },
+  {
+    "Id": 2,
+    "studentId": "1",
+    "classId": "class1",
+    "date": "2024-01-09",
+    "status": "present"
+  },
+  {
+    "Id": 3,
+    "studentId": "1",
+    "classId": "class1",
+    "date": "2024-01-10",
+    "status": "tardy"
+  },
+  {
+    "Id": 4,
+    "studentId": "2",
+    "classId": "class1",
+    "date": "2024-01-08",
+    "status": "present"
+  },
+  {
+    "Id": 5,
+    "studentId": "2",
+    "classId": "class1",
+    "date": "2024-01-09",
+    "status": "absent"
+  },
+  {
+    "Id": 6,
+    "studentId": "2",
+    "classId": "class1",
+    "date": "2024-01-10",
+    "status": "present"
+  },
+  {
+    "Id": 7,
+    "studentId": "3",
+    "classId": "class2",
+    "date": "2024-01-08",
+    "status": "present"
+  },
+  {
+    "Id": 8,
+    "studentId": "3",
+    "classId": "class2",
+    "date": "2024-01-09",
+    "status": "present"
+  },
+  {
+    "Id": 9,
+    "studentId": "4",
+    "classId": "class1",
+    "date": "2024-01-08",
+    "status": "present"
+  },
+  {
+    "Id": 10,
+    "studentId": "4",
+    "classId": "class1",
+    "date": "2024-01-09",
+    "status": "tardy"
+  },
+  {
+    "Id": 11,
+    "studentId": "5",
+    "classId": "class1",
+    "date": "2024-01-08",
+    "status": "present"
+  },
+  {
+    "Id": 12,
+    "studentId": "5",
+    "classId": "class2",
+    "date": "2024-01-08",
+    "status": "present"
+  },
+  {
+    "Id": 13,
+    "studentId": "6",
+    "classId": "class2",
+    "date": "2024-01-08",
+    "status": "absent"
+  },
+  {
+    "Id": 14,
+    "studentId": "7",
+    "classId": "class3",
+    "date": "2024-01-08",
+    "status": "present"
+  },
+  {
+    "Id": 15,
+    "studentId": "8",
+    "classId": "class1",
+    "date": "2024-01-08",
+    "status": "present"
+  }
+]
