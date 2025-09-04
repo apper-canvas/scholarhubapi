@@ -84,8 +84,51 @@ const Grades = () => {
     }
   };
 
-  const handleAddAssignment = () => {
-    toast.info("Assignment creation feature coming soon!");
+const handleAddAssignment = async () => {
+    try {
+      // Simple prompt-based assignment creation
+      const name = prompt("Enter assignment name:");
+      if (!name || name.trim() === "") {
+        toast.error("Assignment name is required");
+        return;
+      }
+
+      const pointsInput = prompt("Enter points (e.g., 100):");
+      const points = parseInt(pointsInput);
+      if (!pointsInput || isNaN(points) || points <= 0) {
+        toast.error("Please enter a valid points value");
+        return;
+      }
+
+      const dueDateInput = prompt("Enter due date (YYYY-MM-DD) or leave empty for today:");
+      let dueDate = new Date().toISOString().split('T')[0]; // Default to today
+      if (dueDateInput && dueDateInput.trim() !== "") {
+        // Basic date validation
+        const inputDate = new Date(dueDateInput);
+        if (isNaN(inputDate.getTime())) {
+          toast.error("Please enter a valid date in YYYY-MM-DD format");
+          return;
+        }
+        dueDate = dueDateInput;
+      }
+
+      // Create the assignment
+      const newAssignment = await assignmentService.create({
+        name: name.trim(),
+        points: points,
+        dueDate: dueDate,
+        category: "Homework", // Default category
+        classId: "class1", // Default class - could be enhanced with class selection
+        description: ""
+      });
+
+      // Refresh assignments to show the new one immediately
+      await loadGradesData();
+
+    } catch (error) {
+      console.error("Error creating assignment:", error);
+      toast.error("Failed to create assignment. Please try again.");
+    }
   };
 
   if (loading) return <Loading text="Loading grades..." />;
