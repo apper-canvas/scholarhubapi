@@ -64,7 +64,7 @@ const Sidebar = ({ isOpen, onClose }) => {
       </aside>
       
       {/* Desktop sidebar */}
-      <aside className="hidden lg:block w-64 h-screen bg-gradient-to-b from-primary to-primary-dark">
+<aside className="hidden lg:block fixed top-0 left-0 w-64 h-full bg-gradient-to-b from-primary to-primary-dark z-30">
         <div className="p-6">
           <div className="flex items-center mb-8">
             <ApperIcon name="GraduationCap" className="w-8 h-8 text-white mr-3" />
