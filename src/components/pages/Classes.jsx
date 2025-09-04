@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from "react";
-import Button from "@/components/atoms/Button";
-import Card from "@/components/atoms/Card";
-import Badge from "@/components/atoms/Badge";
-import Loading from "@/components/ui/Loading";
-import Error from "@/components/ui/Error";
-import Empty from "@/components/ui/Empty";
-import ApperIcon from "@/components/ApperIcon";
+import React, { useEffect, useState } from "react";
 import { classService } from "@/services/api/classService";
 import { studentService } from "@/services/api/studentService";
 import { toast } from "react-toastify";
+import ApperIcon from "@/components/ApperIcon";
+import Error from "@/components/ui/Error";
+import Empty from "@/components/ui/Empty";
+import Loading from "@/components/ui/Loading";
+import Select from "@/components/atoms/Select";
+import Badge from "@/components/atoms/Badge";
+import Button from "@/components/atoms/Button";
+import Card from "@/components/atoms/Card";
 
 const Classes = () => {
   const [classes, setClasses] = useState([]);
@@ -374,97 +375,117 @@ const handleAddClass = () => {
           </div>
         </div>
       </Card>
-{/* Create Class Form */}
+{/* Create Class Modal */}
       {showCreateForm && (
-        <Card variant="gradient" className="p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900">Create New Class</h3>
-            <Button
-              variant="ghost"
-              size="sm"
-              icon="X"
-              onClick={handleCancelCreate}
-            />
-          </div>
-          
-          <form onSubmit={handleCreateSubmit} className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label htmlFor="className" className="block text-sm font-medium text-gray-700 mb-1">
-                  Class Name *
-                </label>
-                <input
-                  id="className"
-                  type="text"
-                  className="input-field"
-                  placeholder="e.g., Math 101, English Literature"
-                  value={formData.name}
-                  onChange={(e) => handleInputChange('name', e.target.value)}
-                  disabled={createLoading}
-                  required
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                  Subject *
-                </label>
-                <select
-                  id="subject"
-                  className="input-field"
-                  value={formData.subject}
-                  onChange={(e) => handleInputChange('subject', e.target.value)}
-                  disabled={createLoading}
-                  required
-                >
-                  <option value="">Select Subject</option>
-                  <option value="Mathematics">Mathematics</option>
-                  <option value="English">English</option>
-                  <option value="Science">Science</option>
-                  <option value="History">History</option>
-                  <option value="Art">Art</option>
-                  <option value="Physical Education">Physical Education</option>
-                  <option value="Music">Music</option>
-                </select>
-              </div>
-              
-              <div>
-                <label htmlFor="period" className="block text-sm font-medium text-gray-700 mb-1">
-                  Period *
-                </label>
-                <input
-                  id="period"
-                  type="text"
-                  className="input-field"
-                  placeholder="e.g., 1st Period, 9:00-10:00 AM"
-                  value={formData.period}
-                  onChange={(e) => handleInputChange('period', e.target.value)}
-                  disabled={createLoading}
-                  required
-                />
-              </div>
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              handleCancelCreate();
+            }
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') {
+              handleCancelCreate();
+            }
+          }}
+        >
+          <Card 
+            variant="gradient" 
+            className="w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 animate-scale-in"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-xl font-semibold text-gray-900">Create New Class</h3>
+              <Button
+                variant="ghost"
+                size="sm"
+                icon="X"
+                onClick={handleCancelCreate}
+                className="hover:bg-gray-100"
+              />
             </div>
             
-            <div className="flex items-center justify-end space-x-3 pt-4 border-t border-gray-200">
-              <Button
-                type="button"
-                variant="secondary"
-                onClick={handleCancelCreate}
-                disabled={createLoading}
-              >
-                Cancel
-              </Button>
-              <Button
-                type="submit"
-                icon="Plus"
-                loading={createLoading}
-                disabled={createLoading}
-              >
-                Create Class
-              </Button>
-            </div>
-          </form>
-        </Card>
+            <form onSubmit={handleCreateSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div>
+                  <label htmlFor="className" className="block text-sm font-medium text-gray-700 mb-1">
+                    Class Name *
+                  </label>
+                  <input
+                    id="className"
+                    type="text"
+                    className="input-field"
+                    placeholder="e.g., Math 101, English Literature"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    disabled={createLoading}
+                    required
+                    autoFocus
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                    Subject *
+                  </label>
+                  <select
+                    id="subject"
+                    className="input-field"
+                    value={formData.subject}
+                    onChange={(e) => handleInputChange('subject', e.target.value)}
+                    disabled={createLoading}
+                    required
+                  >
+                    <option value="">Select Subject</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="English">English</option>
+                    <option value="Science">Science</option>
+                    <option value="History">History</option>
+                    <option value="Art">Art</option>
+                    <option value="Physical Education">Physical Education</option>
+                    <option value="Music">Music</option>
+                  </select>
+                </div>
+                
+                <div className="md:col-span-2 lg:col-span-1">
+                  <label htmlFor="period" className="block text-sm font-medium text-gray-700 mb-1">
+                    Period *
+                  </label>
+                  <input
+                    id="period"
+                    type="text"
+                    className="input-field"
+                    placeholder="e.g., 1st Period, 9:00-10:00 AM"
+                    value={formData.period}
+                    onChange={(e) => handleInputChange('period', e.target.value)}
+                    disabled={createLoading}
+                    required
+                  />
+                </div>
+              </div>
+              
+              <div className="flex items-center justify-end space-x-3 pt-6 border-t border-gray-200 mt-6">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={handleCancelCreate}
+                  disabled={createLoading}
+                >
+                  Cancel
+                </Button>
+                <Button
+                  type="submit"
+                  icon="Plus"
+                  loading={createLoading}
+                  disabled={createLoading}
+                >
+                  Create Class
+                </Button>
+              </div>
+            </form>
+          </Card>
+        </div>
       )}
     </div>
   );
