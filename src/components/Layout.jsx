@@ -33,9 +33,9 @@ const Layout = () => {
           <Header 
             onMenuClick={handleMenuClick} 
             title={getPageTitle()} 
-          />
+/>
           
-          <main className="p-6">
+          <main>
             <Outlet />
           </main>
         </div>
