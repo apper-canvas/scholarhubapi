@@ -29,7 +29,7 @@ const Layout = () => {
           onClose={handleSidebarClose}
         />
         
-<div className="flex-1 lg:ml-60">
+<div className="flex-1 lg:ml-64">
           <Header 
             onMenuClick={handleMenuClick} 
             title={getPageTitle()} 
