@@ -16,6 +16,13 @@ const Classes = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [stats, setStats] = useState({});
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [createLoading, setCreateLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    subject: "",
+    period: ""
+  });
 
   const loadClassesData = async () => {
     try {
@@ -83,8 +90,47 @@ const Classes = () => {
     }
   };
 
-  const handleAddClass = () => {
-    toast.info("Class creation feature coming soon!");
+const handleAddClass = () => {
+    setShowCreateForm(true);
+    setFormData({ name: "", subject: "", period: "" });
+  };
+
+  const handleCreateSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!formData.name.trim() || !formData.subject.trim() || !formData.period.trim()) {
+      toast.error("Please fill in all required fields");
+      return;
+    }
+
+    setCreateLoading(true);
+    try {
+      await classService.create({
+        name: formData.name.trim(),
+        subject: formData.subject.trim(),
+        period: formData.period.trim()
+      });
+      
+      setShowCreateForm(false);
+      setFormData({ name: "", subject: "", period: "" });
+      await loadClassesData();
+    } catch (err) {
+      toast.error(err.message || "Failed to create class");
+    } finally {
+      setCreateLoading(false);
+    }
+  };
+
+  const handleCancelCreate = () => {
+    setShowCreateForm(false);
+    setFormData({ name: "", subject: "", period: "" });
+  };
+
+  const handleInputChange = (field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
   };
 
   if (loading) return <Loading text="Loading classes..." />;
@@ -328,6 +374,98 @@ const Classes = () => {
           </div>
         </div>
       </Card>
+{/* Create Class Form */}
+      {showCreateForm && (
+        <Card variant="gradient" className="p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold text-gray-900">Create New Class</h3>
+            <Button
+              variant="ghost"
+              size="sm"
+              icon="X"
+              onClick={handleCancelCreate}
+            />
+          </div>
+          
+          <form onSubmit={handleCreateSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label htmlFor="className" className="block text-sm font-medium text-gray-700 mb-1">
+                  Class Name *
+                </label>
+                <input
+                  id="className"
+                  type="text"
+                  className="input-field"
+                  placeholder="e.g., Math 101, English Literature"
+                  value={formData.name}
+                  onChange={(e) => handleInputChange('name', e.target.value)}
+                  disabled={createLoading}
+                  required
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
+                  Subject *
+                </label>
+                <select
+                  id="subject"
+                  className="input-field"
+                  value={formData.subject}
+                  onChange={(e) => handleInputChange('subject', e.target.value)}
+                  disabled={createLoading}
+                  required
+                >
+                  <option value="">Select Subject</option>
+                  <option value="Mathematics">Mathematics</option>
+                  <option value="English">English</option>
+                  <option value="Science">Science</option>
+                  <option value="History">History</option>
+                  <option value="Art">Art</option>
+                  <option value="Physical Education">Physical Education</option>
+                  <option value="Music">Music</option>
+                </select>
+              </div>
+              
+              <div>
+                <label htmlFor="period" className="block text-sm font-medium text-gray-700 mb-1">
+                  Period *
+                </label>
+                <input
+                  id="period"
+                  type="text"
+                  className="input-field"
+                  placeholder="e.g., 1st Period, 9:00-10:00 AM"
+                  value={formData.period}
+                  onChange={(e) => handleInputChange('period', e.target.value)}
+                  disabled={createLoading}
+                  required
+                />
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-end space-x-3 pt-4 border-t border-gray-200">
+              <Button
+                type="button"
+                variant="secondary"
+                onClick={handleCancelCreate}
+                disabled={createLoading}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="submit"
+                icon="Plus"
+                loading={createLoading}
+                disabled={createLoading}
+              >
+                Create Class
+              </Button>
+            </div>
+          </form>
+        </Card>
+      )}
     </div>
   );
 };
